@@ -37,9 +37,10 @@ STEPS = [
     ("empirics",   "panel_a",               "empirics/scripts/01_panel_a_construction.py"),       # Figure 1A
     ("empirics",   "panel_b",               "empirics/scripts/02_panel_b_commuters.py"),          # Figure 1B
     ("empirics",   "figure1",               "empirics/scripts/03_figure1_combined.py"),           # Figure 1 (A over B)
+    ("robustness", "robustness_checks",     "robustness/robustness_checks.py"),                   # Panel B robustness (see robustness/README.md)
     ("writing",    "paper",                 "Writing/scripts/build_paper.py"),                    # Writing/main.pdf (skipped without LaTeX)
 ]
-STAGES = ["collection", "cleaning", "processing", "empirics", "writing"]
+STAGES = ["collection", "cleaning", "processing", "empirics", "robustness", "writing"]
 CHECK_SCRIPT = "data/scripts/checks/check_replication.py"
 
 

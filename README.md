@@ -4,7 +4,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?logo=python&logoColor=white)
 ![Data](https://img.shields.io/badge/data-PLUTO%20%7C%20LODES%202009%E2%80%932020-555)
-![Status](https://img.shields.io/badge/status-replication%20package-2e7d32)
+![Status](https://img.shields.io/badge/status-completed-2e7d32)
 
 Fedor Shafranov — final assignment, Housing course, LMU Munich (July 2025).
 Paper: [`Writing/main.pdf`](Writing/main.pdf) (LaTeX rebuild) · as submitted:
@@ -12,25 +12,85 @@ Paper: [`Writing/main.pdf`](Writing/main.pdf) (LaTeX rebuild) · as submitted:
 
 ---
 
-## The fact
+## The paper
 
-Hudson Yards on Manhattan's Far West Side was mostly rail yards and vacant land until a large,
-privately led redevelopment started in 2012. In September 2015 the **34 St–Hudson Yards** station
-(7 line) opened — the last case of a new NYC subway station built into an essentially new neighbourhood.
+**Setting.** Hudson Yards in New York City was once underdeveloped compared to other Manhattan
+neighborhoods, primarily consisting of unused land and rail yards owned by the MTA. Development began in
+2012, becoming one of the largest privately-led real estate projects (Fisher and Leite 2018). In September
+2015, the 34th Street–Hudson Yards subway station opened. As the last case of a new station built in a
+completely new neighborhood in NYC, it offers a unique case study of how commercial development interacts
+with urban infrastructure. This study examines how the opening of the subway influences commuter patterns
+in the area.
 
-1. **Construction accelerates after the opening.** Built floor area in the Hudson Yards census tract
-   rises from about 2.1 million m² in 2015 to 3.1 million m² in 2016 and 3.5 million m² in 2020;
-   office space doubles (Panel A).
-2. **Commuters come from farther away.** In every distance bin except the closest (< 1 km), the
-   number of Hudson Yards commuters per 1,000 workers in a home tract is higher after 2015 than before;
-   in the closest bin it falls (Panel B).
+**Data.** To estimate changes in commuting patterns, I use two datasets: the Primary Land Use Tax Lot Output
+(PLUTO) from the New York City Department of City Planning (2025) and the LEHD Origin-Destination Employment
+Statistics (LODES) from the U.S. Census Bureau (2025). PLUTO contains data on all tax lots in New York City,
+updated annually to reflect demolitions and new constructions. I aggregate the data to the census tract
+level for the Hudson Yards area to track neighborhood development. LODES provides a cross-product of census
+blocks in New York State. I aggregate this data to the tract level and identify workers commuting to Hudson
+Yards from each New York census tract. I then estimate the distance between tracts.
+
+**Fact.** I observe two key trends in the data. First, the subway opening stimulates construction. Panel A
+of Figure 1 shows that after 2015, development in Hudson Yards accelerated. Second, it increases commutes for
+people living farther from the area, replacing those who live nearby. Panel B shows that, for all distance
+bins except the closest one, the number of commuters rose.
+
+**Discussion.** The second fact is of main interest because it shows gentrification of the community in
+action. The newly built subway increases construction in the neighborhood and attracts new commuters
+because of more available transit and more opportunities.
+
+**Literature.** The fact relates to previous literature that studies the effects of urban revival and
+development of urban infrastructure. Previous literature considered how rail transit development introduced
+advanced degree holders to the neighborhood (Liang et al. 2022). The other publications analyzed changes in
+housing prices (Guan et al. 2024) and ridership increase (Gonzalez-Navarro and Turner 2018). My analysis is
+novel because it shows quantitatively how more people living far away from the neighborhood decide to
+commute because of new infrastructure and available transit. Previously, changes in commuters were not
+studied over a geographic distance.
 
 ![Figure 1](empirics/results/figures/fig1_combined.png)
 
-*Figure 1. Panel A: total, commercial and office floor area in census tract 99 (Manhattan), PLUTO,
-square metres; dashed line = subway opening. Panel B: average number of workers commuting to the Hudson
-Yards tracts per 1,000 workers living in a NYC census tract, by distance between the home tract and the
-Hudson Yards tract; 2009–2014 vs. 2015–2020, shaded areas are 95 % confidence intervals of the mean.*
+*Figure 1: Impact of Subway on Construction and Commuting Patterns. Panel A shows changes in construction in
+Hudson Yards from 2009 to 2020, with the built area divided into three categories: total area, commercial
+space, and office space. The areas are converted from square feet to square meters, and the vertical line
+marks the subway opening. Panel B illustrates changes in commuting patterns to Hudson Yards before and after
+the subway opened. The y-axis represents the average number of Hudson Yards commuters per 1,000 workers in
+their census tract, while the x-axis bins census tracts based on their distance from Hudson Yards.*
+
+## Robustness
+
+After the course I re-estimated Panel B under eleven specifications ([`robustness/`](robustness/), full
+write-up in [`robustness/README.md`](robustness/README.md)). Each point below is the change from before to
+after 2015 in Hudson Yards commuters per 1,000 workers, in % of the pre-2015 mean, with 95 % confidence
+intervals clustered by home tract. The specifications change the sample (all NYC tracts including those with
+no Hudson Yards commuters), the distance measure (centroid instead of edge-to-edge), the unit of observation,
+the weighting, and the timing (2015 as a pre-opening or transition year, without 2018, and a "before" period
+of 2011–14 only).
+
+![Robustness of Panel B](robustness/results/figures/r1_pre_post_by_spec.png)
+
+One year stands out. In 2018 jobs in one of the three Hudson Yards tracts jump from about 4,900 to 22,800 and
+fall back to 12,600 in 2019. A one-year jump of this kind most likely reflects an employer reporting its jobs
+under a new address, not the station that opened three years earlier, and it inflates the "after" period in
+every distance bin. The early years 2009–10 also lie well below all later years and pull the "before" period
+down. Even so, the pattern holds when both are removed (S8 without 2018; S10 also without 2009–10): commuting
+from tracts within 3 km of Hudson Yards falls (−15 % to −31 % in S10), while commuting from 5–10 km away
+rises relative to both nearer and farther tracts. The effects are smaller than in the original figure, but
+the substitution of nearby workers by workers from farther neighbourhoods remains.
+
+![Placebo destinations](robustness/results/figures/r4_placebo_destinations.png)
+
+The pattern is also specific to Hudson Yards. For workplaces in the rest of Manhattan, and for the Midtown
+tracts 0.5–3 km from Hudson Yards that got no new station, the same before/after change is small (−7 % to +8 %) in
+every distance bin. So the result is not a citywide shift towards longer commutes.
+
+## Further research
+
+A single station opening is one observation, and it coincided with one of the largest real-estate
+developments in the city, so this case alone cannot separate the subway from the development around it.
+The natural next step is more data: many station openings across New York and in other cities around
+the world, each with commuting flows by origin before and after. That would make it possible to test whether
+this is a general fact: that new subway access leads to local resident workers being replaced by commuters
+from farther-away neighbourhoods.
 
 ## Data
 
@@ -50,14 +110,14 @@ Requirements: [uv](https://docs.astral.sh/uv/) (installs Python 3.13 and the pac
 
 ```bash
 uv sync                                 # Python environment
-uv run python master.py                 # download raw data, clean, build, draw Figure 1
+uv run python master.py                 # download raw data, clean, build, Figure 1, robustness, paper
 uv run python master.py --check         # ... and compare with the original output and the frozen baseline
 ```
 
 Other options: `--list` (show steps), `--stage cleaning` / `--only panel_b` / `--from processing`
-(partial runs), `--link-from DIR` (use raw files you already have instead of downloading),
-`--set-baseline` (freeze current outputs). Each step writes a log to `logs/`.
-A full run takes about 1 minute plus download time on a laptop.
+(partial runs), `--stage robustness` (robustness checks only), `--link-from DIR` (use raw files you
+already have instead of downloading), `--set-baseline` (freeze current outputs). Each step writes a log to
+`logs/`. A full run takes a few minutes plus download time on a laptop.
 
 ### Pipeline
 
@@ -70,6 +130,7 @@ A full run takes about 1 minute plus download time on a laptop.
 | empirics | `empirics/scripts/01_panel_a_construction.py` | Figure 1A + `empirics/results/tables/panel_a_built_area.csv` |
 | empirics | `empirics/scripts/02_panel_b_commuters.py` | Figure 1B + `empirics/results/tables/panel_b_commuters_by_distance.csv` |
 | empirics | `empirics/scripts/03_figure1_combined.py` | Figure 1 (`empirics/results/figures/fig1_combined.png/.pdf`) |
+| robustness | `robustness/robustness_checks.py` | `robustness/results/{tables,figures}/` |
 | writing | `Writing/scripts/build_paper.py` | `Writing/main.pdf` (skipped without LaTeX) |
 | check | `data/scripts/checks/check_replication.py` | compares outputs with `archive/legacy_outputs/` and `archive/baseline/` |
 
@@ -96,9 +157,28 @@ data/scripts/                 collection, cleaning, processing, checks
 data/clean/, data/processed/  generated data (not in git)
 empirics/scripts/             figure scripts
 empirics/results/             figures and the tables behind them
+robustness/                   robustness checks of Panel B and their results
 Writing/                      the paper (LaTeX) and the submitted PDF
 archive/                      original notebooks, legacy output, frozen baseline
 ```
+
+## References
+
+- Fisher, B. and Leite, F. (2018). The Cost of New York City's Hudson Yards Redevelopment Project. Schwartz
+  Center for Economic Policy Analysis and Department of Economics, The New School for Social Research,
+  Working Paper Series 2018-2.
+- Gonzalez-Navarro, M. and Turner, M. A. (2018). Subways and Urban Growth: Evidence from Earth. *Journal of
+  Urban Economics* 108: 85–106.
+- Guan, C., You, M., Li, Y., Tan, J. and Jenq, C. (2024). Analyzing Adverse Effects of Subway Extension on
+  Housing Prices in Affluent Urban Neighborhoods: Evidence from the Q-Line in Manhattan. *Applied Geography* 166.
+- Liang, C., Huang, Y., Yip, T. L. and Li, V. J. (2022). Does Rail Transit Development Gentrify Neighborhoods?
+  Evidence from Hong Kong. *Transportation Research Part A: Policy and Practice* 155: 354–372.
+  https://doi.org/10.1016/j.tra.2021.11.022
+- New York City Department of City Planning (2025). Primary Land Use Tax Lot Output (PLUTO). NYC Open Data,
+  https://data.cityofnewyork.us/City-Government/Primary-Land-Use-Tax-Lot-Output-PLUTO-/64uk-42ks, accessed
+  31 July 2025.
+- U.S. Census Bureau (2025). LEHD Origin-Destination Employment Statistics, ny_od_main_JT01_2009 to
+  ny_od_main_JT01_2020. https://lehd.ces.census.gov/data/lodes, accessed 31 July 2025.
 
 ## Citation
 
