@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[oc]
+.venv
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
+
+# raw data (download with master.py / data/raw/README.md) and logs
+data/raw/*
+!data/raw/README.md
+logs/
+
+# large generated data (rebuilt by master.py)
+data/clean/
+data/processed/
+
+# LaTeX build files
+Writing/*.aux
+Writing/*.log
+Writing/*.out
+Writing/*.bbl
+Writing/*.blg
+Writing/*.fls
+Writing/*.fdb_latexmk
+Writing/*.synctex.gz

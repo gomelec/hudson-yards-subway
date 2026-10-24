@@ -1,0 +1,23 @@
+https://data.census.gov/table/ACSST5Y2023.S2506?t=Business+and+Economy&g=040XX00US36$1400000
+
+https://senseable.mit.edu/what-city/
+
+universal law of people's mobility: https://senseable.mit.edu/wanderlust/
+
+Gilles Duranton: https://scholar.google.com/citations?hl=en&user=_IlDfNAAAAAJ&view_op=list_works&sortby=pubdate
+Понравились его публикации
+
+disannual 
+
+icpsr census opulation and housing https://www.icpsr.umich.edu/web/ICPSR/series/15
+
+AHS can get median payments
+
+Blog post where using lodes packages a guy visualizes commute flows of apple workers. 
+https://walker-data.com/posts/lodes-commutes/?utm_source=chatgpt.com
+
+Blog Post on outlier with 174k jobs in one census tract
+https://tradediversion.net/2015/07/31/where-are-the-jobs-dont-look-too-closely/
+
+Мужик написавший пост выше интересный учёный из колумбийского универа. занимается spatial economics
+http://www.jdingel.com/

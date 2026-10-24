@@ -1,0 +1,13 @@
+[project]
+name = "hudson-yards-subway"
+version = "1.0.0"
+description = "Replication package: subway opening, construction and commuting in Hudson Yards (NYC), 2009-2020"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "geopandas>=1.0",
+    "pyogrio>=0.10",
+    "matplotlib>=3.9",
+]

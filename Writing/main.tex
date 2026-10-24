@@ -1,0 +1,89 @@
+% Subway Opening in the Process of Urban Revival — LaTeX version of the submitted note (July 2025).
+% Text as submitted; the figure is read from the pipeline output, so it updates after `master.py`.
+% Build:  cd Writing && latexmk -pdf main.tex
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\IfFileExists{newtxtext.sty}{\usepackage{newtxtext,newtxmath}}{\usepackage{mathptmx}}   % Times
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[authoryear,round]{natbib}
+\usepackage[hidelinks]{hyperref}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+
+\newcommand{\figfile}{../empirics/results/figures/fig1_combined.pdf}
+
+\begin{document}
+
+% ---------------------------------------------------------------- cover page
+\begin{titlepage}
+\centering
+\vspace*{6cm}
+{\LARGE Subway Opening in the Process of Urban Revival\par}
+\vspace{1.5cm}
+{\large Fedor Shafranov\par}
+\vspace{0.5cm}
+Final assignment, Housing, LMU Munich, July 2025\par
+\vfill
+{\small Replication package: \texttt{master.py} in the repository root reproduces Figure~1.\par}
+\end{titlepage}
+
+% ---------------------------------------------------------------- main page
+\section*{Subway Opening in the Process of Urban Revival}
+
+\textbf{Setting:} Hudson Yards in New York City was once underdeveloped compared to other Manhattan
+neighborhoods, primarily consisting of unused land and rail yards owned by the MTA. Development began in
+2012, becoming one of the largest privately-led real estate projects \citep{fisher2018}. In September 2015,
+the 34th Street--Hudson Yards subway station opened. As the last case of a new station built in a completely
+new neighborhood in NYC, it offers a unique case study of how commercial development interacts with urban
+infrastructure. This study examines how the opening of the subway influences commuter patterns in the area.
+
+\textbf{Data:} To estimate changes in commuting patterns, I use two datasets: the Primary Land Use Tax Lot
+Output (PLUTO) from the New York City Department of City Planning \citeyearpar{pluto2025} and the LEHD
+Origin-Destination Employment Statistics (LODES) from the U.S. Census Bureau \citeyearpar{lodes2025}.
+PLUTO contains data on all tax lots in New York City, updated annually to reflect demolitions and new
+constructions. I aggregate the data to the census tract level for the Hudson Yards area to track
+neighborhood development. LODES provides a cross-product of census blocks in New York State. I aggregate
+this data to the tract level and identify workers commuting to Hudson Yards from each New York census
+tract. I then estimate the distance between tracts.
+
+\textbf{Fact:} I observe two key trends in the data. First, the subway opening stimulates construction.
+Panel A of Figure~\ref{fig:main} shows that after 2015, development in Hudson Yards accelerated. Second, it
+increases commutes for people living farther from the area, replacing those who live nearby. Panel B shows
+that, for all distance bins except the closest one, the number of commuters rose.
+
+\textbf{Discussion:} The second fact is of main interest because it shows gentrification of the community
+in action. The newly built subway increases construction in the neighborhood and attracts new commuters
+because of more available transit and more opportunities.
+
+\textbf{Literature:} The fact relates to previous literature that studies the effects of urban revival and
+development of urban infrastructure. Previous literature considered how rail transit development introduced
+advanced degree holders to the neighborhood \citep{liang2022}. The other publications analyzed changes in
+housing prices \citep{guan2024} and ridership increase \citep{gonzalez2018}. My analysis is novel because
+it shows quantitatively how more people living far away from the neighborhood decide to commute because of
+new infrastructure and available transit. Previously, changes in commuters were not studied over a
+geographic distance.
+
+% ---------------------------------------------------------------- figure
+\clearpage
+\begin{figure}[p]
+\centering
+\IfFileExists{\figfile}{\includegraphics[width=\textwidth,height=0.78\textheight,keepaspectratio]{\figfile}}%
+  {\fbox{\parbox{0.9\textwidth}{\centering\vspace{3cm}Run \texttt{master.py} to create\\ \texttt{empirics/results/figures/fig1\_combined.pdf}\vspace{3cm}}}}
+\caption{Impact of Subway on Construction and Commuting Patterns. Panel A shows changes in construction in
+Hudson Yards from 2009 to 2020, with the built area divided into three categories: total area, commercial
+space, and office space. The areas are converted from square feet to square meters, and the vertical line
+marks the subway opening. Panel B illustrates changes in commuting patterns to Hudson Yards before and after
+the subway opened. The y-axis represents the average number of Hudson Yards commuters per 1,000 workers in
+their census tract, while the x-axis bins census tracts based on their distance from Hudson Yards.}
+\label{fig:main}
+\end{figure}
+
+\clearpage
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
