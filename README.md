@@ -83,6 +83,31 @@ The pattern is also specific to Hudson Yards. For workplaces in the rest of Manh
 tracts 0.5–3 km from Hudson Yards that got no new station, the same before/after change is small (−7 % to +8 %) in
 every distance bin. So the result is not a citywide shift towards longer commutes.
 
+## A separate hypothesis: did richer commuters start coming?
+
+A natural follow-up question is whether the new station brought in workers who earn more, or who live in
+richer neighbourhoods. LODES splits every commuting flow by monthly earnings (up to $1,250, $1,251–3,333,
+above $3,333), which allows two checks ([`robustness/income_composition.py`](robustness/income_composition.py)).
+
+![High earners among commuters](robustness/results/figures/income_i1_high_earner_share.png)
+
+**Earnings of the commuters.** The share of high earners among Hudson Yards commuters jumped in 2011, when the
+number of jobs in one of the Hudson Yards tracts tripled, years before the station. After that it stays about 3–5 percentage
+points above the nearby Midtown tracts, with no change around 2015 apart from the 2018 spike. The comparison
+with Midtown is needed because the earnings thresholds are not adjusted for inflation, so the share rises
+everywhere over time.
+
+![Origin neighbourhood wealth](robustness/results/figures/income_i2_origin_wealth.png)
+
+**Wealth of the home neighbourhoods.** Home tracts are ranked into fifths by the share of high earners among
+their residents in 2009–11. The share of Hudson Yards commuters coming from the richest fifth peaks in 2011
+and then declines to the Midtown level. Around the opening, commuting from the richest tracts falls rather
+than rises. This mostly repeats the distance result, because almost all tracts within 3 km of Hudson Yards
+belong to the richest fifth.
+
+**In short, nothing really happened here:** there is no sign that the subway changed the earnings or the
+neighbourhood wealth of the workers coming to Hudson Yards.
+
 ## Further research
 
 A single station opening is one observation, and it coincided with one of the largest real-estate
